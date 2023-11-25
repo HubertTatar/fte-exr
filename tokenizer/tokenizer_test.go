@@ -39,7 +39,7 @@ func Test_tokenize(t *testing.T) {
 	}
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
-			if got := tokenize(tt.text); !reflect.DeepEqual(got, tt.tokens) {
+			if got := Tokenize(tt.text); !reflect.DeepEqual(got, tt.tokens) {
 				t.Errorf("tokenize() = %v, want %v", got, tt.tokens)
 			}
 		})
