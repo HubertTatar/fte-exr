@@ -1,5 +1,7 @@
 Implementing simple full text search engine
 
+Parse xml docs from wikimedia dump, process and index using inverted index.
+
 Flow of text processing
 
 ```mermaid
