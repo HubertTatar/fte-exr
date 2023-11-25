@@ -6,17 +6,17 @@ import (
 	"fts-exr/tokenizer"
 )
 
-type index map[string][]int
+type Index map[string][]int
 
-// add adds documents to the index.
-func (idx index) add(docs []document.Document) {
+// Add adds documents to the index.
+func (idx Index) Add(docs []document.Document) {
 	for _, doc := range docs {
 		tokens := tokenizer.Tokenize(doc.Text)
 		normalized := normalization.Normalize(tokens)
 		for _, token := range normalized {
 			ids := idx[token]
 			if ids != nil && ids[len(ids)-1] == doc.ID {
-				// Don't add same ID twice.
+				// Don't Add same ID twice.
 				continue
 			}
 			idx[token] = append(ids, doc.ID)
@@ -47,8 +47,8 @@ func intersection(a []int, b []int) []int {
 	return r
 }
 
-// search queries the index for the given text.
-func (idx index) search(text string) []int {
+// Search queries the index for the given text.
+func (idx Index) Search(text string) []int {
 	var r []int
 	tokens := tokenizer.Tokenize(text)
 	normalized := normalization.Normalize(tokens)

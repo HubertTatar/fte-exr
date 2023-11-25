@@ -16,7 +16,7 @@ type Document struct {
 
 // loadDocuments loads a Wikipedia abstract dump and returns a slice of documents.
 // Dump example: https://dumps.wikimedia.org/enwiki/latest/enwiki-latest-abstract1.xml.gz
-func loadDocuments(path string) ([]Document, error) {
+func LoadDocuments(path string) ([]Document, error) {
 	f, err := os.Open(path)
 	if err != nil {
 		return nil, err
